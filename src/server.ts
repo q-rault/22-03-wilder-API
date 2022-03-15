@@ -13,8 +13,8 @@ const port = 3001;
 
 mongoose
   .connect('mongodb://127.0.0.1:27017/wilderdb', { autoIndex: true })
-  .then(() => console.log('connection au serveur réussie'))
-  .catch(() => console.log('erreur'));
+  .then(() => console.log('connection au serveur réussie')) // eslint-disable-line no-console
+  .catch(() => console.log('erreur')); // eslint-disable-line no-console
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -64,14 +64,14 @@ app.get('/', (req: Request, res: Response) => {
 
 app.use((error: any, req: Request, res: Response) => {
   if (error.code === 11000) {
-    res.status(400);
-    res.json({ success: false, message: 'The name is already used' });
+    res
+      .status(400)
+      .json({ success: false, message: 'The name is already used' });
   } else {
-    res.status(400);
-    res.json('unknown error');
+    res.status(400).json('unknown error');
   }
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Example app listening on port ${port}`); // eslint-disable-line no-console
 });

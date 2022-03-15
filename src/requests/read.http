@@ -1,10 +1,10 @@
-GET http://localhost:3000/api/wilder/read
+GET http://localhost:3001/api/wilder/read
 
 ###
 
-GET http://localhost:3000/
+GET http://localhost:3001/
 
 
 ###
 
-GET http://localhost:3000/random
+GET http://localhost:3001/random

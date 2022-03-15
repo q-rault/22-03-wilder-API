@@ -8,7 +8,7 @@ interface Skills {
 interface Wilder {
   name: string;
   city: string;
-  skills: Skills[];
+  skills?: Skills[];
 }
 
 const { Schema } = mongoose;
@@ -19,4 +19,4 @@ const WilderModel = new Schema<Wilder>({
   skills: [{ title: String, votes: Number }],
 });
 
-module.exports = mongoose.model('wilder', WilderModel);
+module.exports = mongoose.model<Wilder>('wilder', WilderModel);
