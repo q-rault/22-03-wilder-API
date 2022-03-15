@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import wilderController from './controllers/Wilder';
 
 const express = require('express');
 
@@ -6,8 +7,6 @@ const app = express();
 const mongoose = require('mongoose');
 
 const cors = require('cors');
-
-const WilderController = require('./controllers/Wilder');
 
 const port = 3001;
 
@@ -49,14 +48,14 @@ const runAsyncWrapper =
 //   });
 // });
 
-app.post('/api/wilder/create', runAsyncWrapper(WilderController.create));
+app.post('/api/wilder/create', runAsyncWrapper(wilderController.create));
 
-app.get('/api/wilder/read', runAsyncWrapper(WilderController.read));
+app.get('/api/wilder/read', runAsyncWrapper(wilderController.read));
 
-app.put('/api/wilder/update/:id', runAsyncWrapper(WilderController.update));
-// app.patch("/api/wilder/patch/:id", WilderController.patch);
+app.put('/api/wilder/update/:id', runAsyncWrapper(wilderController.update));
+// app.patch("/api/wilder/patch/:id", wilderController.patch);
 
-app.delete('/api/wilder/delete/:id', runAsyncWrapper(WilderController.delete));
+app.delete('/api/wilder/delete/:id', runAsyncWrapper(wilderController.delete));
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World test!');

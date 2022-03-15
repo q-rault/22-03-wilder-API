@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 const WilderModel = require('../models/Wilder');
 
-module.exports = {
+const wilderController = {
   create: async (req: Request, res: Response) => {
     const wilder = new WilderModel(req.body);
     const result = await wilder.save();
@@ -31,3 +31,5 @@ module.exports = {
     res.json({ success: true, result });
   },
 };
+
+export default wilderController;
