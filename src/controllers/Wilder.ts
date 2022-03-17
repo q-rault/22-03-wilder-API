@@ -19,7 +19,16 @@ const wilderController = {
       { _id: req.params.id },
       { ...req.body }
     );
-    res.json({ success: true, result });
+    if (result.matchedCount) {
+      res.json({
+        success: true,
+        result,
+        _id: req.params.id,
+        updatedWilder: { ...req.body },
+      });
+    } else {
+      res.json({ success: true, result });
+    }
   },
 
   delete: async (req: Request, res: Response) => {
